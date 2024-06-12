@@ -1,0 +1,17 @@
+#Chipseq_Example
+
+# Quality control
+
+fastqc input.fastq
+
+# Trimming of adapter ends
+#   PE <- paired ends looks for two input&output files (SE=unpaired, looks for single input&ouput file)
+#   input_1.fastq input_2.fastq <- input files
+#   output_trimmed_1_p.fastq output_trimmed_1_up.fastq output_trimmed_2_p.fastq output_trimmed_2_up.fastq <- output files paired and unpaired
+#   ILLUMINACLIP <- cut adapters and illumina specific sequences, in this case TruSeq3-PE.fa:2:30:10
+#   Leading <- number of bases to cut off from the 5' end
+#   TRAILING <- number of bases to cut from the 3' end
+#   SLIDINGWINDOW <- starts at 5' end and trims read when average quality of bases (first number) falls below Q thereshold (2nd number)
+#   MINLEN <- minimum length of the read to be valid.
+
+trimmomatic PE  input_1.fastq input_2.fastq output_trimmed_1_p.fastq output_trimmed_1_up.fastq output_trimmed_2_p.fastq output_trimmed_2_up.fastq ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
