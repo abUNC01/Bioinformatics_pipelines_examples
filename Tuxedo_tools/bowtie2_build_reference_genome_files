@@ -1,0 +1,7 @@
+# bowtie2 build reference index files from specified organisms genome file
+
+
+#    -f HGChr38.fa <- -f flag denotes that input file is fasta format. e.g human genome reference 38 file. could use -c and multiple files could be used.
+#    HGChr38 <- this is the name of the output files; all files named like HGChr38.1.bt2, HGChr38.2.bt2, etc. number of outputs depends on total size of input
+
+bowtie2-build -f HGChr38.fa HGChr38
