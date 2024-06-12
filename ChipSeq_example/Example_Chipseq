@@ -15,3 +15,11 @@ fastqc input.fastq
 #   MINLEN <- minimum length of the read to be valid.
 
 trimmomatic PE  input_1.fastq input_2.fastq output_trimmed_1_p.fastq output_trimmed_1_up.fastq output_trimmed_2_p.fastq output_trimmed_2_up.fastq ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+# Mapping the trimmed sequences to a reference genome using bowtie2
+#    -x reference_genome <- to map the input fastq files against. e.g. HGCh38
+#    -1 output_trimmed_1_p.fastq <- the first input file, must be paired with -2 flag. can use -U for unpaired
+#    -2 output_trimmed_2_p.fastq <- the second input file, must be paired with -1 flag. can use -U for unpaired
+#    -S output.sam <- output file to write to, can also use -b for a bam file output
+
+bowtie2 -x reference_genome -1 output_trimmed_1_p.fastq -2 output_trimmed_2_p.fastq -S output.sam
