@@ -23,3 +23,16 @@ trimmomatic PE  input_1.fastq input_2.fastq output_trimmed_1_p.fastq output_trim
 #    -S output.sam <- output file to write to, can also use -b for a bam file output
 
 bowtie2 -x GRCh38 -1 output_trimmed_1_p.fastq -2 output_trimmed_2_p.fastq -S output.sam
+
+# Sorting using samtools
+#    sort <- sort the files by chromosome, position, strand 
+#    output.sam <- input file from bowtie2, a sam file
+#    -o output.bam <- output file that is sorted and now in .bam format (compressed and binary for faster processing, not human readable though)
+
+samtools sort output.sam -o output.bam
+
+# Indexing using samtools
+#    index <- index the file, will output a *.bam.bai file that allows faster access to specfic regions of your sequencing results
+#    output.bam <- the input file from the samtools sort output
+
+samtools index output.bam
