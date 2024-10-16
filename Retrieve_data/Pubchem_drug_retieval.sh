@@ -5,3 +5,5 @@ API_ENDPOINT="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/"
 
 # Query the target drug
 drug_query="trametinib" 
+
+FILE_OUTPUT_FORMAT="json"
