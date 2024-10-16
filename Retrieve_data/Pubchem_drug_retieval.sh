@@ -12,4 +12,4 @@ FILE_OUTPUT_FORMAT="json"
 API_Call="${API_ENDPOINT}${drug_query}/${FILE_OUTPUT_FORMAT}"
 
 # CURL Request to get the call and retrieve the json data of the target drug
-curl -X GET "${API_CALL}" 
+curl -X GET "${API_CALL}" -H 'Accept: application/json' -H 'Content-Type: application/json' -o "molecular_data_${drug_query}.${FILE_OUTPUT_FORMAT}"
