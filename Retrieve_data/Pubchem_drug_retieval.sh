@@ -8,6 +8,8 @@ drug_query="trametinib"
 
 FILE_OUTPUT_FORMAT="json"
 
-The api request
-
+# The api request
 API_Call="${API_ENDPOINT}${drug_query}/${FILE_OUTPUT_FORMAT}"
+
+# CURL Request to get the call and retrieve the json data of the target drug
+curl -X GET "${API_CALL}" 
